@@ -1,0 +1,8 @@
+prefix=/home/test/Manta/Ros_Loco/devel
+
+Name: manta
+Description: Description of manta
+Version: 0.0.0
+Cflags: -I/home/test/Manta/Ros_Loco/devel/include
+Libs: -L${prefix}/lib 
+Requires: message_runtime std_msgs

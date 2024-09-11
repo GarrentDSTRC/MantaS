@@ -1,0 +1,9 @@
+float32 heading
+float32 pitch
+float32 roll
+float32 dvl_height
+float32 dvl_velocity
+float32 stat_byte
+float64 latitude
+float64 longitude
+float64 altitude

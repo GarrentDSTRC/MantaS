@@ -1,0 +1,10 @@
+<launch>
+  <!-- Launch Depth_sensor.py -->
+  <node name="depth_sensor_data_publisher" pkg="sensor_fish" type="Depth_sensor.py" output="screen"/>
+  
+  <!-- Launch High_sensor.py -->
+  <node name="altitude_sensor_data_publisher" pkg="sensor_fish" type="High_sensor.py" output="screen"/>
+  
+  <!-- Launch DVL_IMU_read.py -->
+  <node name="dvl_publisher" pkg="sensor_fish" type="DVL_IMU_read.py" output="screen"/>
+</launch>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Send Custom ROS Messages</title>
+  <script type="text/javascript" src="http://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+</head>
+<body>
+  <h2>Send Custom ROS Messages</h2>
+  
+  <button onclick="sendCustomMessage1()">Send Message 1</button>
+  <button onclick="sendCustomMessage2()">Send Message 2</button>
+  <button onclick="sendCustomMessage3()">Send Message 3</button>
+
+  <script type="text/javascript">
+    var ros = new ROSLIB.Ros({
+      url: 'ws://localhost:9090'
+    });
+
+    function sendCustomMessage1() {
+      var customMsg = new ROSLIB.Message({
+        // 自定义消息 1 的字段和值
+        field1: 'value1_1',
+        field2: 123,
+        // 根据你的自定义消息类型调整字段和值
+      });
+
+      var topic = new ROSLIB.Topic({
+        ros: ros,
+        name: '/your_custom_topic1',
+        messageType: 'your_custom_msg_type'
+      });
+
+      topic.publish(customMsg);
+      alert('Message 1 Sent!');
+    }
+
+    function sendCustomMessage2() {
+      var customMsg = new ROSLIB.Message({
+        // 自定义消息 2 的字段和值
+        field1: 'value2_1',
+        field2: 456,
+        // 根据你的自定义消息类型调整字段和值
+      });
+
+      var topic = new ROSLIB.Topic({
+        ros: ros,
+        name: '/your_custom_topic2',
+        messageType: 'your_custom_msg_type'
+      });
+
+      topic.publish(customMsg);
+      alert('Message 2 Sent!');
+    }
+
+    function sendCustomMessage3() {
+      var customMsg = new ROSLIB.Message({
+        // 自定义消息 3 的字段和值
+        field1: 'value3_1',
+        field2: 789,
+        // 根据你的自定义消息类型调整字段和值
+      });
+
+      var topic = new ROSLIB.Topic({
+        ros: ros,
+        name: '/your_custom_topic3',
+        messageType: 'your_custom_msg_type'
+      });
+
+      topic.publish(customMsg);
+      alert('Message 3 Sent!');
+    }
+  </script>
+</body>
+</html>

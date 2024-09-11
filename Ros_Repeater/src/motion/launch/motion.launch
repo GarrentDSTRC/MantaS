@@ -1,0 +1,5 @@
+<launch>
+    <env name="PYTHONPATH" value="$(find Motor_class.py)/scripts:$(env PYTHONPATH)"/>
+    <!-- 其他节点启动 -->
+    <node pkg="motion" type="Tuogou_sub.py" name="Tuogou_sub" output="screen" />
+</launch>

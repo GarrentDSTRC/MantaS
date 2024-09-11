@@ -1,0 +1,2 @@
+manta
+-DCATKIN_DEVEL_PREFIX=/home/test/Manta/Ros_Loco/devel -DCMAKE_INSTALL_PREFIX=/home/test/Manta/Ros_Loco/install -G Unix Makefiles

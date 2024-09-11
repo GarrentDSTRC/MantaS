@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Send Custom ROS Messages</title>
+  <script type="text/javascript" src="http://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+</head>
+<body>
+  <h2>Send Custom ROS Messages</h2>
+  
+  <button onclick="sendCustomMessage1()">Set Speed to 0.1</button>
+  <button onclick="sendCustomMessage2()">Set Speed to 0.2</button>
+  <button onclick="sendCustomMessage3()">Set Speed to 0.3</button>
+
+  <script type="text/javascript">
+    var ros = new ROSLIB.Ros({
+      url: 'ws://localhost:9090'
+    });
+
+    function sendCustomMessage1() {
+      var customMsg = new ROSLIB.Message({
+        linear: {
+          x: 0.1,
+          y: 0.0,
+          z: 0.0
+        },
+        angular: {
+          x: 0.0,
+          y: 0.0,
+          z: 0.0
+        }
+      });
+
+      var topic = new ROSLIB.Topic({
+        ros: ros,
+        name: '/turtle1/cmd_vel',
+        messageType: 'geometry_msgs/Twist'
+      });
+
+      topic.publish(customMsg);
+      alert('Speed set to 0.1!');
+    }
+
+    function sendCustomMessage2() {
+      var customMsg = new ROSLIB.Message({
+        linear: {
+          x: 0.2,
+          y: 0.0,
+          z: 0.0
+        },
+        angular: {
+          x: 0.0,
+          y: 0.0,
+          z: 0.0
+        }
+      });
+
+      var topic = new ROSLIB.Topic({
+        ros: ros,
+        name: '/turtle1/cmd_vel',
+        messageType: 'geometry_msgs/Twist'
+      });
+
+      topic.publish(customMsg);
+      alert('Speed set to 0.2!');
+    }
+
+    function sendCustomMessage3() {
+      var customMsg = new ROSLIB.Message({
+        linear: {
+          x: 0.3,
+          y: 0.0,
+          z: 0.0
+        },
+        angular: {
+          x: 0.0,
+          y: 0.0,
+          z: 0.0
+        }
+      });
+
+      var topic = new ROSLIB.Topic({
+        ros: ros,
+        name: '/turtle1/cmd_vel',
+        messageType: 'geometry_msgs/Twist'
+      });
+
+      topic.publish(customMsg);
+      alert('Speed set to 0.3!');
+    }
+  </script>
+</body>
+</html>
