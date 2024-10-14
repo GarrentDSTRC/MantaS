@@ -1,0 +1,2 @@
+set(motion_MESSAGE_FILES "")
+set(motion_SERVICE_FILES "")

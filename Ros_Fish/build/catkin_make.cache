@@ -1,0 +1,2 @@
+motion_control:sensor_fish
+-DCATKIN_DEVEL_PREFIX=/home/jetson/Manta/Ros_Fish/devel -DCMAKE_INSTALL_PREFIX=/home/jetson/Manta/Ros_Fish/install -G Unix Makefiles

@@ -45,7 +45,7 @@ class MotorControlNode:
         
         for _ in range(2):
             # 第一次发送角度指令
-            self.controller.send_angle_newM(self.controller.motor_id, angle)
+            self.controller.send_angle(self.controller.motor_id, angle)
             data = self.controller.receive_data()
             self.controller.parse_received_data(data)
 
@@ -65,10 +65,14 @@ class MotorControlNode:
 
 
 if __name__ == '__main__':
+    motor_control_node = MotorControlNode()
+    motor_control_node.run()
     try:
-        motor_control_node = MotorControlNode()
-        motor_control_node.run()
+        pass
+        #motor_control_node = MotorControlNode()
+        #motor_control_node.run()
     except rospy.ROSInterruptException:
+        print("启动失败")
         logging.info("Caught ROS interrupt, shutting down.")
         motor_control_node.on_shutdown()
     except KeyboardInterrupt:

@@ -31,7 +31,7 @@ CAN_POS = 0     # 0: CAN1    1: CAN2
 # 0 表示左旋， 1表示右旋
 vis = [0, 0, 0, 0, 0, 0, 0, 0]
 
-ID = [0x0360, 0x0361, 0x035F, 0x0364, 0x0313, 0x0314, 0x35A, 0x35B]
+ID = [0x0360, 0x0361, 0x035F, 0x0364, 0x0313, 0x0314, 0x307, 0x35B]
 
 class VCI_INIT_CONFIG(Structure):
     _fields_ = [("AccCode", c_uint),
@@ -150,7 +150,47 @@ def read_last_csv_data(filename='Actuatordata.csv'):
 # 关闭通道
 def closeCanDLL():
     canDLL.VCI_CloseDevice(VCI_USBCAN2, 0)
+def restartCanChannel():
+    # 关闭设备
+    closeCanDLL()
+    print('设备已关闭\r\n')
 
+    # 重新打开设备
+    ret = canDLL.VCI_OpenDevice(VCI_USBCAN2, 0, 0)
+    if ret == STATUS_OK:
+        print('调用 VCI_OpenDevice 成功\r\n')
+    else:
+        print('调用 VCI_OpenDevice 出错\r\n')
+        return  # 如果打开设备失败，则不再继续执行
+
+    # 重新初始化和启动0通道
+    vci_initconfig = VCI_INIT_CONFIG(0x80000000, 0xFFFFFFFF, 0, 0, 0x00, 0x1C, 0)
+    ret = canDLL.VCI_InitCAN(VCI_USBCAN2, 0, 0, byref(vci_initconfig))
+    if ret == STATUS_OK:
+        print('调用 VCI_InitCAN1 成功\r\n')
+    else:
+        print('调用 VCI_InitCAN1 出错\r\n')
+        return
+
+    ret = canDLL.VCI_StartCAN(VCI_USBCAN2, 0, 0)
+    if ret == STATUS_OK:
+        print('调用 VCI_StartCAN1 成功\r\n')
+    else:
+        print('调用 VCI_StartCAN1 出错\r\n')
+
+    # 重新初始化和启动1通道
+    ret = canDLL.VCI_InitCAN(VCI_USBCAN2, 0, 1, byref(vci_initconfig))
+    if ret == STATUS_OK:
+        print('调用 VCI_InitCAN2 成功\r\n')
+    else:
+        print('调用 VCI_InitCAN2 出错\r\n')
+        return
+
+    ret = canDLL.VCI_StartCAN(VCI_USBCAN2, 0, 1)
+    if ret == STATUS_OK:
+        print('调用 VCI_StartCAN2 成功\r\n')
+    else:
+        print('调用 VCI_StartCAN2 出错\r\n')
 def receiveData():
     global stop_receiving
     open('Actuatordata.csv', 'a').close()
@@ -271,6 +311,7 @@ def actuation_node():
     rospy.spin()
 
 def stop_all_propellers():
+
     for pid in range(len(ID)):
         handle_command(MotorCommandMsg(ID=pid, command=0), 'propeller')
         handle_command(MotorCommandMsg(ID=pid, command=0), 'motor')

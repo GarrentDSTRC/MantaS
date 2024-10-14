@@ -1,0 +1,8 @@
+prefix=/home/jetson/Manta/Ros_Fish/devel
+
+Name: sensor_fish
+Description: Description of sensor_fish
+Version: 0.0.0
+Cflags: -I/home/jetson/Manta/Ros_Fish/devel/include
+Libs: -L${prefix}/lib 
+Requires: rospy std_msgs message_runtime

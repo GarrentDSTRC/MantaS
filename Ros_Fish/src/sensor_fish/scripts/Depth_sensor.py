@@ -14,7 +14,7 @@ stop_threads_depth = False  # 停止标志
 
 def load_params_depth():
     global Com485_Depth_Sensor
-    serial_port = '/dev/ttyUSB1'  # 根据你的设置调整
+    serial_port = '/dev/ttyUSB2'  # 根据你的设置调整
     baud_rate = 9600  # 根据你的设置调整
     Com485_Depth_Sensor = serial.Serial(serial_port, baud_rate, timeout=1)
     print("串口打开成功")

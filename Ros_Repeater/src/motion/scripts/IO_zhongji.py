@@ -29,6 +29,17 @@ def gpio_setup():
     GPIO.setup(led2_relay_pin, GPIO.OUT, initial=GPIO.LOW)
     GPIO.setup(led3_relay_pin, GPIO.OUT, initial=GPIO.LOW)
 
+    # 默认LED灯打开3秒
+    GPIO.output(led1_relay_pin, GPIO.LOW)
+    GPIO.output(led2_relay_pin, GPIO.LOW)
+    GPIO.output(led3_relay_pin, GPIO.LOW)
+    log_with_timestamp("默认LED灯打开3秒")
+    time.sleep(3)  # 延迟3秒
+    GPIO.output(led1_relay_pin, GPIO.HIGH)
+    GPIO.output(led2_relay_pin, GPIO.HIGH)
+    GPIO.output(led3_relay_pin, GPIO.HIGH)
+    log_with_timestamp("默认LED灯关闭")
+    
 def callback(data):
     log_with_timestamp(f"I heard: {data.data}")
     if data.data == "tuogouon":

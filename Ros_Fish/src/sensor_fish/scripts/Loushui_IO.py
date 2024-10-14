@@ -28,9 +28,9 @@ def sensor_monitor():
         qiangdian_state, ruodian_state = read_sensor_states()
         
         if qiangdian_state:
-            qiangdian_msg = "强电罐漏水"
-        else:
             qiangdian_msg = "强电罐无漏水"
+        else:
+            qiangdian_msg = "强电罐漏水"
         
         if ruodian_state:
             ruodian_msg = "弱电罐漏水"

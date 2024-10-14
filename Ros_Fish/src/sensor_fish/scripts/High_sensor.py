@@ -17,7 +17,7 @@ stop_threads_altitude = False  # Stop flag
 
 def load_params_altitude():
     global Com485_Altitude_Sensor
-    serial_port = '/dev/ttyUSB0'  # Adjust according to your settings
+    serial_port = '/dev/ttyUSB1'  # Adjust according to your settings
     baud_rate = 9600  # Adjust according to your settings
     Com485_Altitude_Sensor = serial.Serial(serial_port, baud_rate, timeout=1)
     print("Serial port opened successfully")

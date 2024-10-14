@@ -7,7 +7,7 @@ from sensor_fish.msg import BatteryStatus  # 导入自定义消息类型
 import pandas as pd
 
 # 定义串行通信参数
-SERIAL_PORT = '/dev/ttyUSB3'  # 根据实际情况调整串行端口
+SERIAL_PORT = '/dev/ttyUSB4'  # 根据实际情况调整串行端口
 BAUD_RATE = 9600
 BYTESIZE = serial.EIGHTBITS
 PARITY = serial.PARITY_NONE

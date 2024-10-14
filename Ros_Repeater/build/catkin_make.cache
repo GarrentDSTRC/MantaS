@@ -1,0 +1,2 @@
+motion:sensor_repeater
+-DCATKIN_DEVEL_PREFIX=/home/jetson/Manta/Ros_Repeater/devel -DCMAKE_INSTALL_PREFIX=/home/jetson/Manta/Ros_Repeater/install -G Unix Makefiles

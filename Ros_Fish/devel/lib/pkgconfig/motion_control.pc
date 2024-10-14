@@ -1,0 +1,8 @@
+prefix=/home/jetson/Manta/Ros_Fish/devel
+
+Name: motion_control
+Description: Description of motion_control
+Version: 0.0.0
+Cflags: -I/home/jetson/Manta/Ros_Fish/devel/include
+Libs: -L${prefix}/lib 
+Requires: message_runtime std_msgs rospy
