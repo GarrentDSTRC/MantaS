@@ -106,7 +106,7 @@ def main():
         config_id = input("Enter the number of the config file you want to use: ")
 
         if config_id == '9':
-            for _ in range(2):
+            for _ in range(3):
             # 执行config8.json和config9.json
                 execute_config(config_files['8'])
                 execute_config(config_files['9'])

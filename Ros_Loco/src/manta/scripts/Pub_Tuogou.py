@@ -14,18 +14,18 @@ def publish_control_signal():
     rate = rospy.Rate(1)  # 1 Hz
     
     # 提示用户输入
-    rospy.loginfo("Enter 'on' to publish True, 'off' to publish False. Type 'exit' to quit.")
+    rospy.loginfo("Enter '1' 开锁, '2' 锁紧. Type 'e' to quit.")
     
     while not rospy.is_shutdown():
         user_input = input("Enter command: ").strip().lower()
         
-        if user_input == 'on':
+        if user_input == '1':
             control_signal = Bool(data=True)
             rospy.loginfo("Publishing: True")
-        elif user_input == 'off':
+        elif user_input == '2':
             control_signal = Bool(data=False)
             rospy.loginfo("Publishing: False")
-        elif user_input == 'exit':
+        elif user_input == 'e':
             rospy.loginfo("Exiting publisher...")
             break
         else:

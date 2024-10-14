@@ -1,15 +1,15 @@
 {   "time": 5
     ,
     "propellers": [
-        {"id": 0, "command": 0},
-        {"id": 1, "command": 0},
-        {"id": 2, "command": 0},
-        {"id": 3, "command": 0},
-        {"id": 4, "command": 1080},
-        {"id": 5, "command": 1080}
+        {"id": 0, "command": 600},
+        {"id": 1, "command": 600},
+        {"id": 2, "command": 600},
+        {"id": 3, "command": 600},
+        {"id": 4, "command": 600},
+        {"id": 5, "command": 600}
     ],
     "motors": [
-        {"id": 6, "command": 90},
-        {"id": 7, "command": 90}
+        {"id": 6, "command": 70},
+        {"id": 7, "command": 70}
     ]
 }

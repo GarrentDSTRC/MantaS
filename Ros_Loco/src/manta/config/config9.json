@@ -9,7 +9,7 @@
         {"id": 5, "command": 1000}
     ],
     "motors": [
-        {"id": 6, "command": 90},
-        {"id": 7, "command": 0}
+        {"id": 6, "command": 0},
+        {"id": 7, "command": 80}
     ]
 }

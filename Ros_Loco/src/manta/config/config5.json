@@ -1,12 +1,12 @@
 {   "time": 3
     ,
     "propellers": [
-        {"id": 0, "command": 0},
-        {"id": 1, "command": 0},
-        {"id": 2, "command": 0},
-        {"id": 3, "command": 0},
-        {"id": 4, "command": 800},
-        {"id": 5, "command": 800}
+        {"id": 0, "command": -1200},
+        {"id": 1, "command": -1200},
+        {"id": 2, "command": -1200},
+        {"id": 3, "command": -1200},
+        {"id": 4, "command": 0},
+        {"id": 5, "command": 0}
     ],
     "motors": [
         {"id": 6, "command": 0},
