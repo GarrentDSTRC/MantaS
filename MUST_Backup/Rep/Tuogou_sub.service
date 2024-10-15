@@ -6,12 +6,11 @@ After=network.target
 User=jetson
 Group=jetson
 WorkingDirectory=/home/jetson/Dayu_Scripts
-ExecStart=/home/jetson/Dayu_Scripts/Hight_sensor.sh
+ExecStart=/home/jetson/Dayu_Scripts/Tuogou_sub.sh
 Restart=on-failure
 Environment="ROS_MASTER_URI=http://192.168.50.10:11311"
-Environment="ROS_IP=192.168.50.10"
+Environment="ROS_IP=192.168.50.13"
 Environment="PYTHONUNBUFFERED=1"
 
 [Install]
 WantedBy=multi-user.target
-
