@@ -14,7 +14,7 @@ add_message_files(
   MotorCommandMsg.msg
   PropellerCommandMsg.msg
   CommandMsg.msg
-  
+  DVLData.msg
 )
 
 # 生成消息
@@ -39,6 +39,7 @@ catkin_install_python(PROGRAMS
   scripts/Depth_high_pub.py
   scripts/High_pub.py
   scripts/Deepth_pub.py
+  scripts/Heading_pub.py
   scripts/Pub_Huxiji.py
   scripts/IO_dayu.py
   scripts/IO_zhongji.py
