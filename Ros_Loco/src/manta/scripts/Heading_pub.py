@@ -40,7 +40,7 @@ class PIDHeadingController:
     def depth_callback(self, msg): 
         self.current_heading = msg.heading
         self.depth_count += 1
-        #rospy.loginfo(f"Current Depth: {self.current_depth}")
+        #rospy.loginfo(f"MSG: {msg}")
         # print(f"Received Depth Data: {self.current_depth} meters")  # 打印接收到的深度信息
         
         if self.control_countWZY%30==0:
@@ -58,7 +58,7 @@ class PIDHeadingController:
             return
 
         # 计算误差
-        error = self.target_depth - self.current_depth
+        error = self.target_depth - self.current_heading
         delta_time = current_time - self.previous_time
 
         # 计算PID控制输出
@@ -69,16 +69,16 @@ class PIDHeadingController:
         control_signal = p_term + i_term + d_term
 
         # 将控制信号限制在300到500之间
-        control_signal = -1* max(min(int(control_signal), 2200), -2200)  # 确保control_signal为整数类型
+        control_signal = -1* max(min(int(control_signal), 500), -500)  # 确保control_signal为整数类型
 
         # 发布控制信号
         command_msg = CommandMsg()
 
-        command_msg.ID = 6
+        command_msg.ID = 4
         command_msg.command = self.basespeed+control_signal  # 将控制信号作为整数传递
         # 发布控制信号
         self.control_pub.publish(command_msg)
-        command_msg.ID = 7
+        command_msg.ID = 5
         command_msg.command = self.basespeed-control_signal 
         self.control_pub.publish(command_msg)
 
@@ -92,7 +92,7 @@ class PIDHeadingController:
 
         # 打印频率信息
         if current_time - self.last_print_time >= 1.0:
-            rospy.loginfo(f"Current Depth: {self.current_depth}, Target Depth: {self.target_depth}, Control Signal: {control_signal}")
+            rospy.loginfo(f"Current Heading: {self.current_heading}, Target: {self.target_depth}, Control Signal: {control_signal}")
             # rospy.loginfo(f"Depth Read Frequency: {self.depth_count} Hz, Control Publish Frequency: {self.control_count} Hz")
             self.depth_count = 0
             self.control_count = 0
@@ -124,11 +124,11 @@ if __name__ == '__main__':
     rospy.init_node('pid_heading_control_node', anonymous=True)
     
     # 本地定义目标深度
-    target_heading = 1.2# 目标heading为1米
+    target_heading = 203 # 目标heading为1
     basespeed=0
     duration=180
     # 创建PID控制器实例，执行时间为10秒
-    controller = PIDDepthController(target_heading=target_heading, kp=1, ki=0, kd=0, duration=duration,basespeed=basespeed)
+    controller = PIDHeadingController(target_heading=target_heading, kp=1, ki=0, kd=0, duration=duration,basespeed=basespeed)
 
     # 保持节点运行
     rospy.spin()
